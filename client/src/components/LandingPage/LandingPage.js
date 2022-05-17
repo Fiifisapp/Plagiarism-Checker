@@ -8,9 +8,16 @@ import {
   Quote,
   OrangeText,
   SourceHighlight,
-  Button
+  Button,
+  Title,
+  TitleImage,
+  TextImageWrapper, 
+  TextWrapper, 
+  Text,
+  TextHighlight,
 } from "./LandingPage.Style";
 import Source from "../../assets/source1.png";
+import title from "../../assets/title.png";
 import { useNavigate } from "react-router-dom";
 
 const LandingPage = () => {
@@ -28,15 +35,33 @@ const LandingPage = () => {
         </QuoteWrapper>
         <SourceText className="source-text">
           <OrangeText>
-            If there is an issue with <SourceHighlight>plagiarism</SourceHighlight>, then we can{" "}
-            <SourceHighlight> pinpoint exactly</SourceHighlight>
-            who from and where from...
+            If there is an issue with <SourceHighlight>plagiarism</SourceHighlight>, then we can
+            <SourceHighlight> pinpoint exactly </SourceHighlight>who from and where from...
           </OrangeText>
           <Button onClick={() => {
               navigate('/login')
           }}>Let's find out</Button>
         </SourceText>
       </SourceTextWrapper>
+
+      <Title className="main-logo">
+          <TitleImage src={title} alt="plagiarism" />
+      </Title>
+          <TextImageWrapper className="text-image-wrapper">
+              <TextWrapper className="text-wrapper">
+              
+                <Text>
+                Many <TextHighlight>dislike literacy </TextHighlight>, so they look for <TextHighlight>shortcuts </TextHighlight> 
+                and don't see anything wrong with <TextHighlight>borrowing </TextHighlight> someone
+                <TextHighlight> else's words </TextHighlight> to express themselves.
+                </Text>
+                <Quote>"</Quote>
+              </TextWrapper>
+              
+          </TextImageWrapper>
+          <Button onClick={() => {
+              navigate('/login')
+          }}>Let's find out</Button>
     </div>
   );
 };

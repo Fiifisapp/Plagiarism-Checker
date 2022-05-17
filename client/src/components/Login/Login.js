@@ -33,7 +33,9 @@ const Login = () => {
   const onSubmitHandler = (data) => {
     console.log({ data });
     reset();
-    navigate("/dashboard")
+
+    
+    // navigate("/dashboard")
   };
   
 
