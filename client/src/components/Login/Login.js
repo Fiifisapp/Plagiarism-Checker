@@ -35,7 +35,7 @@ const Login = () => {
     reset();
 
     
-    // navigate("/dashboard")
+    navigate("/dashboard")
   };
   
 
