@@ -1,67 +1,87 @@
 import React from "react";
+import APC from "../../assets/logo.png";
+import Avatar from "../../assets/avatar.png";
+import Tile from "../../assets/title-card.png";
+import book from "../../assets/fundamental 1.png";
 import {
-  ImageWrapper,
-  SourceImg,
-  SourceTextWrapper,
-  QuoteWrapper,
-  SourceText,
-  Quote,
-  OrangeText,
-  SourceHighlight,
+  LogoContainer,
+  Logo,
+  HeroSection,
+  HeroAvatar,
+  AvatarImage,
+  HeroText,
+  BoldText,
   Button,
-  Title,
-  TitleImage,
-  TextImageWrapper, 
-  TextWrapper, 
-  Text,
-  TextHighlight,
+  SourceSection,
+  TitleTextContainer,
+  SourceText,
+  SourceImage,
+  TileCard,
+  BookContainer,
+  BookImage,
 } from "./LandingPage.Style";
-import Source from "../../assets/source1.png";
-import title from "../../assets/title.png";
-import { useNavigate } from "react-router-dom";
 
 const LandingPage = () => {
-    const navigate = useNavigate()
-
   return (
     <div>
-      <ImageWrapper className="source-image">
-        <SourceImg src={Source} alt="source Image" />
-      </ImageWrapper>
+      <LogoContainer className="logo-container">
+        <Logo src={APC} alt="" />
+      </LogoContainer>
 
-      <SourceTextWrapper className="source-text-wrapper">
-        <QuoteWrapper className="quote-wrapper">
-          <Quote>"</Quote>
-        </QuoteWrapper>
-        <SourceText className="source-text">
-          <OrangeText>
-            If there is an issue with <SourceHighlight>plagiarism</SourceHighlight>, then we can
-            <SourceHighlight> pinpoint exactly </SourceHighlight>who from and where from...
-          </OrangeText>
-          <Button onClick={() => {
-              navigate('/login')
-          }}>Let's find out</Button>
-        </SourceText>
-      </SourceTextWrapper>
+      <HeroSection className="hero-section">
+        <HeroAvatar className="avatar">
+          <AvatarImage src={Avatar} alt="" />
+        </HeroAvatar>
 
-      <Title className="main-logo">
-          <TitleImage src={title} alt="plagiarism" />
-      </Title>
-          <TextImageWrapper className="text-image-wrapper">
-              <TextWrapper className="text-wrapper">
-              
-                <Text>
-                Many <TextHighlight>dislike literacy </TextHighlight>, so they look for <TextHighlight>shortcuts </TextHighlight> 
-                and don't see anything wrong with <TextHighlight>borrowing </TextHighlight> someone
-                <TextHighlight> else's words </TextHighlight> to express themselves.
-                </Text>
-                <Quote>"</Quote>
-              </TextWrapper>
-              
-          </TextImageWrapper>
-          <Button onClick={() => {
-              navigate('/login')
-          }}>Let's find out</Button>
+        <HeroText className="hero-text">
+          If there is an issue with <BoldText>plagiarism</BoldText> , then we
+          can <BoldText>pinpoint exactly </BoldText> who from and where from...
+        </HeroText>
+
+        <Button>let's find out</Button>
+      </HeroSection>
+
+      <SourceSection className="source-section">
+        <TitleTextContainer className="title-text-container">
+          <SourceText className="source-text">source</SourceText>
+          <SourceImage className="source-image">
+            <TileCard src={Tile} alt="" />
+          </SourceImage>
+        </TitleTextContainer>
+        <BookContainer className="book-container">
+          <BookImage src={book} alt="" />
+        </BookContainer>
+      </SourceSection>
+
+      <div className="percentage-section">
+        <div className="percentage-text-wrapper">
+          <h1>
+            Many <span>dislike literacy </span>, so they look for
+            <span>shortcuts </span> and don't see anything wrong with
+            <span>borrowing </span> someone <span>else's words </span> to
+            express themselves.
+          </h1>
+        </div>
+        <div className="card-container">
+          <div className="image-text-container">
+            <img src="" alt="" />
+            <h3>Plagiarised Content</h3>
+          </div>
+          <div className="image-text-container">
+            <img src="" alt="" />
+            <h3>non-Plagiarised Content</h3>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <h3 className="footer-text">
+          Used daily by individuals, teams, and companies of all sizes
+        </h3>
+        <div className="footer-image">
+          <img src="" alt="" />
+        </div>
+      </footer>
     </div>
   );
 };

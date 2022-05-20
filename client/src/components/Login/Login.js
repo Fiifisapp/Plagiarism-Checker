@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -13,6 +13,7 @@ import {
   Button,
 } from "./Login.Style";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const schema = yup.object().shape({
   email: yup.string().email().required(),
@@ -20,6 +21,9 @@ const schema = yup.object().shape({
 });
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const {
     register,
     handleSubmit,
@@ -31,13 +35,16 @@ const Login = () => {
   const navigate = useNavigate();
 
   const onSubmitHandler = (data) => {
-    console.log({ data });
     reset();
-
-    
-    navigate("/dashboard")
+    navigate("/dashboard");
   };
-  
+
+  const postData = (data) => {
+    axios.post(`https://6286d96de9494df61b2e3243.mockapi.io/CrudData`, {
+      email,
+      password
+    });
+  };
 
   return (
     <div>
@@ -47,25 +54,25 @@ const Login = () => {
       <FormContainer onSubmit={handleSubmit(onSubmitHandler)}>
         <LoginHeader>Lets sign you in.</LoginHeader>
 
-        
         <Input
           {...register("email")}
           placeholder="email"
           type="email"
+          onChange={(e) => setEmail(e.target.value)}
           required
         />
         <ErrorMessage>{errors.email?.message}</ErrorMessage>
 
-        
         <Input
           {...register("password")}
           placeholder="password"
           type="password"
+          onChange={(e) => setPassword(e.target.value)}
           required
         />
         <ErrorMessage>{errors.password?.message}</ErrorMessage>
 
-        <Button type="submit">Login</Button>
+        <Button type="submit" onClick={postData}>Login</Button>
       </FormContainer>
     </div>
   );
