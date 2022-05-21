@@ -1,7 +1,10 @@
 import React from "react";
 import Dashboardlogo from "../../assets/logo.png";
+import { BsUiChecks } from "react-icons/bs";
+import { HiDocumentDuplicate, HiOutlineLogout } from "react-icons/hi";
+import { FaUsers } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
-import { DashLogo, Logo, SidebarContainer } from "./Adminboard.Style";
+import { DashLogo, Logo, SidebarContainer, LogoutButton } from "./Adminboard.Style";
 
 const Adminboard = () => {
   return (
@@ -9,15 +12,65 @@ const Adminboard = () => {
       <DashLogo className="dash-logo">
         <Logo src={Dashboardlogo} alt="" />
       </DashLogo>
-      
 
       <SidebarContainer className="sidebar-container">
-        <NavLink to="">Checkers</NavLink>
-        <NavLink to="documents">Documents</NavLink>
-        <NavLink to="">Users</NavLink>
-        logout
+        <NavLink
+          to="checker"
+          style={({ isActive }) => ({
+            color: isActive ? "#EEA40E" : "white",
+            background: isActive ? "white" : "#EEA40E",
+            textDecoration: "none",
+            height: "15vh",
+            paddingLeft: "1.5em",
+            paddingTop: "1.5em",
+            fontSize: "1.4em",
+            fontWeight: "bold",
+            borderRadius: "8px",
+          })}
+        >
+          <BsUiChecks />
+          Checker
+        </NavLink>
+        <NavLink
+          to="documents"
+          style={({ isActive }) => ({
+            color: isActive ? "#EEA40E" : "white",
+            background: isActive ? "white" : "#EEA40E",
+            textDecoration: "none",
+            height: "15vh",
+            paddingLeft: "1.5em",
+            paddingTop: "1.5em",
+            fontSize: "1.4em",
+            fontWeight: "bold",
+            borderRadius: "8px",
+          })}
+        >
+          <HiDocumentDuplicate />
+          Documents
+        </NavLink>
+        <NavLink
+          to="users"
+          style={({ isActive }) => ({
+            color: isActive ? "#EEA40E" : "white",
+            background: isActive ? "white" : "#EEA40E",
+            textDecoration: "none",
+            height: "15vh",
+            paddingLeft: "1.5em",
+            paddingTop: "1.5em",
+            fontSize: "1.4em",
+            fontWeight: "bold",
+            borderRadius: "8px",
+          })}
+        >
+          <FaUsers />
+          Users
+        </NavLink>
+        <LogoutButton>
+          <HiOutlineLogout />
+          logout
+        </LogoutButton>
       </SidebarContainer>
-      <Outlet/>
+      <Outlet />
     </div>
   );
 };

@@ -19,7 +19,7 @@ export const LoginHeader = styled.h2`
 export const FormContainer = styled.form`
     border: 3px solid #D65D2D;
     width: 40%;
-    height: 60vh;
+    height: 70vh;
     margin: 0 auto;
     /* display: flex;
     flex-direction: column;
@@ -28,7 +28,7 @@ export const FormContainer = styled.form`
 
 export const Input = styled.input`
     width: 80%;
-    height: 13%;
+    height: 8vh;
     border: 3px solid #D65D2D;
     margin: 1em 2.5em;
     padding: 0.4em;
@@ -50,7 +50,7 @@ export const ErrorMessage = styled.p`
 
 export const Button = styled.button`
     width: 25%;
-    height: 15%;
+    height: 8vh;
     border: none;
     margin-left: 2.2em;
     margin-top: 0.8em;
