@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const UserContainer = styled.div`
     width: 80%;
-    height: 80vh;
+    height: 100vh;
     position: absolute;
     top: 18%;
     left: 18%;
@@ -28,8 +28,7 @@ export const Button = styled.button`
     border-radius: 5px;
     font-size: 1.3em;
     font-weight: bold; 
-
-    margin-left: 45em;
+    margin-left: 42em;
     margin-top: 2em;
 `;
 
@@ -71,4 +70,14 @@ export const TH = styled.th`
 
 export const TD = styled.td`
   
+`;
+
+export const EditButton = styled.div`
+    /* border: 1px solid red; */
+    cursor: pointer;
+`;
+
+export const DeleteButton = styled.div`
+    /* border: 1px solid black;  */
+    cursor: pointer;
 `;
