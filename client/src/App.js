@@ -12,7 +12,10 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={<Dashboard />}>
+          <Route path="documents" element={<Documents/>}/>
+          <Route path="checker" element={<Checker/>}/>
+        </Route>
         <Route path="/Adminboard" element={<Adminboard/>}>
           <Route path="documents" element={<Documents/>}/>
           <Route path="users" element={<Users/>}/>
