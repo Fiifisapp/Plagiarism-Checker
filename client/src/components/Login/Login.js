@@ -55,7 +55,7 @@ const Login = () => {
   return (
     <div>
       <LogoContainer className="logo-container">
-        <Logo src={logo} alt="" />
+        <Logo src={logo} alt="" onClick={() => navigate("/")}/>
       </LogoContainer>
       <FormContainer onSubmit={handleSubmit(onSubmitHandler)}>
         <LoginHeader>Lets sign you in.</LoginHeader>

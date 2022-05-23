@@ -59,3 +59,75 @@ export const Button = styled.button`
     cursor: pointer;
   }
 `;
+
+export const CheckerContainer = styled.div`
+  width: 80%;
+  height: 55vh;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 10px;
+`;
+
+export const TextArea = styled.textarea`
+  margin-top: 3em;
+  margin-left: 3em;
+  width: 90%;
+  height: 30vh;
+  border: 3px solid #eea40e;
+  border-radius: 8px;
+  font-size: 1.2em;
+  color: black;
+
+  &::placeholder {
+    font-size: 1em;
+    text-align: center;
+  }
+`;
+
+export const ButtonContainer = styled.div`
+  width: 24%;
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1em;
+  margin-left: 48.5em;
+`;
+
+export const LocalButton = styled.button`
+  width: 120px;
+  height: 8vh;
+  border: none;
+  background-color: #eea40e;
+  font-size: 1em;
+  font-weight: bold;
+  border-radius: 5px;
+  color: white;
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+export const WebButton = styled.button`
+  width: 120px;
+  height: 8vh;
+  border: none;
+  background-color: black;
+  font-size: 1em;
+  font-weight: bold;
+  border-radius: 5px;
+  color: white;
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+export const ReportContainer = styled.div`
+  width: 80%;
+  height: 80vh;
+  margin: 2em auto;
+  background-color: white;
+  border-radius: 10px;
+`;

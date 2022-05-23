@@ -1,32 +1,35 @@
 import styled from "styled-components";
 
 export const LoginHeader = styled.h2`
-    margin-top: 0.8em;
+    padding-top: 0.8em;
+    padding-bottom: 0.4em;
     font-size: 2.5em;
-    margin-left: 1.2em;
-    color: #D65D2D;
+    color: white;
+    text-align: center;
 `;
 
 export const FormContainer = styled.form`
-    border: 3px solid #D65D2D;
+    border-radius: 10px;
     width: 100%;
-    height: 60vh;
+    height: 70vh;
     margin: 0 auto;
-    background-color: white;
+    background-color: #EEA40E;
 `;
 
 export const Input = styled.input`
     width: 80%;
-    height: 13%;
-    border: 3px solid #D65D2D;
+    height: 8vh;
+    border-radius: 8px;
     margin: 1em 2.5em;
     padding: 0.4em;
-    color: #D65D2D;
+    color: #EEA40E;
     font-size: 1.2em;
+    border: none;
+    outline: none;
 
 
     &::placeholder{
-        color: #E5BDA5;
+        color: #EEA40E;
         padding: 0.4em;
         font-size: 1em;
     }
@@ -39,19 +42,20 @@ export const ErrorMessage = styled.p`
 
 export const Button = styled.button`
     width: 25%;
-    height: 15%;
+    height: 8vh;
     border: none;
     margin-left: 2.2em;
     margin-top: 0.8em;
-    background-color: #D65D2D;
+    background-color: black;
     font-size: 1.3em;
     font-weight: bold;
+    border-radius: 8px;
     color: white;
 
     &:hover{
         cursor: pointer;
-        background-color: #E5BDA5;
-        color: #D65D2D;
+        background-color: white;
+        color: #EEA40E;
     }
 `;
 
@@ -66,15 +70,15 @@ export const Overlay = styled.div`
 `;
 
 export const ModalContainer = styled.div`
-    margin: 10em auto;
+    margin: 8em auto;
     width: 40%;
 `;
 export const Close = styled.p`
     font-size: 1.8em;
     font-weight: bold;
-    color: #D65D2D;
+    color: black;
     position: absolute;
-    top: 26%;
+    top: 18%;
     left: 67%;
 
     &:hover{

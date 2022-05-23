@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   CheckerContainer,
   HeaderText,
@@ -7,8 +7,11 @@ import {
   LocalButton,
   WebButton,
 } from "./Checker.Style";
+import Report from "../Report/Report";
 
 const Checker = () => {
+  const [openReport, setOpenReport] = useState(false);
+
   return (
     <>
       <HeaderText>Checker</HeaderText>
@@ -21,10 +24,11 @@ const Checker = () => {
           rows="10"
         ></TextArea>
         <ButtonContainer className="button-container">
-          <LocalButton>local check</LocalButton>
-          <WebButton>web check</WebButton>
+          <LocalButton onClick={() => setOpenReport(true)}>local check</LocalButton>
+          <WebButton onClick={() => setOpenReport(true)}>web check</WebButton>
         </ButtonContainer>
       </CheckerContainer>
+      <Report open={openReport} onClose={() => setOpenReport(false)}/>
     </>
   );
 };
