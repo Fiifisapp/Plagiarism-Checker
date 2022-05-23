@@ -1,9 +1,10 @@
 import React from 'react'
-import { DocumentContainer } from './Documents.Style'
+import { DocumentContainer,  HeaderText} from './Documents.Style'
 
 const Documents = () => {
   return (
     <div>
+      <HeaderText>Documents</HeaderText>
       <DocumentContainer className="document container">
         Documents
       </DocumentContainer>

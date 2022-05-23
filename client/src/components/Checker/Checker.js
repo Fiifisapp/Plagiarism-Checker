@@ -1,9 +1,10 @@
 import React from 'react'
-import { CheckerContainer } from './Checker.Style'
+import { CheckerContainer, HeaderText } from './Checker.Style'
 
 const Checker = () => {
   return (
     <div>
+      <HeaderText>Checker</HeaderText>
       <CheckerContainer className="checker-container">
         checker
       </CheckerContainer>

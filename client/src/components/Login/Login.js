@@ -16,6 +16,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const schema = yup.object().shape({
+  name: yup.string().min(8).max(32).required(),
   email: yup.string().email().required(),
   password: yup.string().min(8).max(32).required(),
 });
@@ -23,6 +24,16 @@ const schema = yup.object().shape({
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+
+
+  const postData = (data) => {
+    axios.post(`https://6286d96de9494df61b2e3243.mockapi.io/CrudData`, {
+    name,  
+    email,
+      password
+    });
+  };
 
   const {
     register,
@@ -39,12 +50,7 @@ const Login = () => {
     navigate("/dashboard");
   };
 
-  const postData = (data) => {
-    axios.post(`https://6286d96de9494df61b2e3243.mockapi.io/CrudData`, {
-      email,
-      password
-    });
-  };
+  
 
   return (
     <div>
@@ -53,6 +59,15 @@ const Login = () => {
       </LogoContainer>
       <FormContainer onSubmit={handleSubmit(onSubmitHandler)}>
         <LoginHeader>Lets sign you in.</LoginHeader>
+
+        <Input
+          {...register("name")}
+          placeholder="Please enter your name"
+          type="text"
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
+        <ErrorMessage>{errors.name?.message}</ErrorMessage>
 
         <Input
           {...register("email")}
