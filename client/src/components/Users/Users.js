@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { AiFillDelete } from "react-icons/ai";
 import { FiEdit } from "react-icons/fi";
 import AddUserModal from "../AddUserModal/AddUserModal";
+import UpdateModal from "../UpdateModal/UpdateModal";
 import {
   UserContainer,
   HeaderText,
@@ -20,6 +21,9 @@ import {
 const Users = () => {
   const [APIData, setAPIData] = useState([]);
   const [openModal, setOpenModal] = useState(false);
+  const [updateModal, setUpdateModal] = useState(false);
+
+
   useEffect(() => {
     axios
       .get(`https://6286d96de9494df61b2e3243.mockapi.io/CrudData`)
@@ -41,6 +45,22 @@ const Users = () => {
       setAPIData(getData.data)
     })
   }
+
+
+  const setData = (data) => {
+    let {id, name, email, password} =data
+    localStorage.setItem("ID", id);
+    localStorage.setItem("Name", name);
+    localStorage.setItem("Email", email);
+    localStorage.setItem("Password", password)
+    setUpdateModal(true)
+  }
+
+
+  // const twoFunction = () => {
+  //   setUpdateModal(true);
+  //   setData();
+  // }
   return (
     <div>
       <HeaderText>Users</HeaderText>
@@ -73,7 +93,7 @@ const Users = () => {
                     marginTop: "0.4em"
                   }}
                 >
-                  <EditButton className="edit-button">
+                  <EditButton className="edit-button" onClick={() => setData(data)}>
                     <FiEdit />
                   </EditButton>
                   <DeleteButton onClick={() => onDelete(data.id)} className="delete-button">
@@ -85,6 +105,7 @@ const Users = () => {
           );
         })}
       </TableWrapper>
+      <UpdateModal  open={updateModal} onClose={() => setUpdateModal(false)}/>
     </div>
   );
 };

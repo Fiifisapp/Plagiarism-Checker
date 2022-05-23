@@ -28,7 +28,7 @@ export const Button = styled.button`
     border-radius: 5px;
     font-size: 1.3em;
     font-weight: bold; 
-    margin-left: 42em;
+    margin-left: 44em;
     margin-top: 2em;
 `;
 

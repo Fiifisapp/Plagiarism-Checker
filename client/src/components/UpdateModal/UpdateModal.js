@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -11,27 +11,30 @@ import {
   ModalContainer,
   Overlay,
   Close,
-} from "./AddUserModal.Style";
+} from "./UpdateModal.Style";
 import axios from "axios";
 
 const schema = yup.object().shape({
+    name: yup.string().min(8).max(32).required(),
   email: yup.string().email().required(),
   password: yup.string().min(8).max(32).required(),
 });
 
-const AddUserModal = ({ open, onClose }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
+const UpdateModal = ({ open, onClose }) => {
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] =useState('');
+    const [id, setID] = useState(null);
+
+    useEffect(() => {
+        setID(localStorage.getItem("ID"))
+        setName(localStorage.getItem("Name"))
+        setEmail(localStorage.getItem("Email"))
+        setPassword(localStorage.getItem("Password"))
+    }, [])
 
 
-  const postData = (data) => {
-    axios.post(`https://6286d96de9494df61b2e3243.mockapi.io/CrudData`, {
-    name,  
-    email,
-    password
-    });
-  };
+
   const {
     register,
     handleSubmit,
@@ -41,10 +44,18 @@ const AddUserModal = ({ open, onClose }) => {
   });
 
   if (!open) return null;
-
   const onSubmitHandler = (data) => {
     onClose()
   };
+
+
+  const sendDataAPI = () => {
+      axios.put(`https://6286d96de9494df61b2e3243.mockapi.io/CrudData/${id}`, {
+          name,
+          email,
+          password
+      })
+  }
 
   return (
     <div>
@@ -56,24 +67,24 @@ const AddUserModal = ({ open, onClose }) => {
           className="modalContainer"
         >
           <FormContainer onSubmit={handleSubmit(onSubmitHandler)}>
-            <LoginHeader>Add User</LoginHeader>
+            <LoginHeader>Edit User Details</LoginHeader>
             <Close onClick={onClose} className="closeBtn">
               X
             </Close>
-
             <Input
               {...register("name")}
               placeholder="Please enter your name"
               type="text"
+              value={name}
               onChange={(e) => setName(e.target.value)}
               required
             />
             <ErrorMessage>{errors.name?.message}</ErrorMessage>
-
             <Input
               {...register("email")}
               placeholder="email"
               type="email"
+              value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
             />
@@ -83,14 +94,13 @@ const AddUserModal = ({ open, onClose }) => {
               {...register("password")}
               placeholder="password"
               type="password"
+              value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
             />
             <ErrorMessage>{errors.password?.message}</ErrorMessage>
 
-            <Button type="submit" onClick={postData}>
-              add
-            </Button>
+            <Button type="submit" onClick={sendDataAPI}>update</Button>
           </FormContainer>
         </ModalContainer>
       </Overlay>
@@ -98,4 +108,4 @@ const AddUserModal = ({ open, onClose }) => {
   );
 };
 
-export default AddUserModal;
+export default UpdateModal;

@@ -10,34 +10,40 @@ export const Logo = styled.img`
 
 `;
 export const LoginHeader = styled.h2`
-    margin-top: 0.8em;
+    padding-top: 0.8em;
+    padding-bottom: 0.4em;
     font-size: 2.5em;
-    margin-left: 1.2em;
-    color: #D65D2D;
+    color: white;
+    text-align: center;
 `;
 
 export const FormContainer = styled.form`
-    border: 3px solid #D65D2D;
+    border-radius: 10px;
     width: 40%;
     height: 70vh;
     margin: 0 auto;
+    background-color: #EEA40E;
     /* display: flex;
     flex-direction: column;
     justify-content: center; */
 `;
 
+
+
 export const Input = styled.input`
     width: 80%;
     height: 8vh;
-    border: 3px solid #D65D2D;
+    border-radius: 8px;
     margin: 1em 2.5em;
     padding: 0.4em;
-    color: #D65D2D;
+    color: #EEA40E;
     font-size: 1.2em;
+    border: none;
+    outline: none;
 
 
     &::placeholder{
-        color: #E5BDA5;
+        color: #EEA40E;
         padding: 0.4em;
         font-size: 1em;
     }
@@ -54,14 +60,15 @@ export const Button = styled.button`
     border: none;
     margin-left: 2.2em;
     margin-top: 0.8em;
-    background-color: #D65D2D;
+    background-color: black;
     font-size: 1.3em;
     font-weight: bold;
+    border-radius: 8px;
     color: white;
 
     &:hover{
         cursor: pointer;
-        background-color: #E5BDA5;
-        color: #D65D2D;
+        background-color: white;
+        color: #EEA40E;
     }
 `;
