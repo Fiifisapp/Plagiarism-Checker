@@ -24,8 +24,8 @@ const LandingPage = () => {
 
   const navigate = useNavigate();
 
-  const handleLogin = () => {
-    navigate("/login");
+  const handleAuthentication = () => {
+    navigate("/authen");
   };
 
   
@@ -45,7 +45,7 @@ const LandingPage = () => {
           can <BoldText>pinpoint exactly </BoldText> who from and where from...
         </HeroText>
 
-        <Button onClick={handleLogin}>let's find out</Button>
+        <Button onClick={handleAuthentication}>let's find out</Button>
       </HeroSection>
 
       <CheckerContainer className="checker-container">
