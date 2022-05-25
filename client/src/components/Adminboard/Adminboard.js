@@ -3,14 +3,15 @@ import Dashboardlogo from "../../assets/logo.png";
 import { BsUiChecks } from "react-icons/bs";
 import { HiDocumentDuplicate, HiOutlineLogout } from "react-icons/hi";
 import { FaUsers } from "react-icons/fa";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { DashLogo, Logo, SidebarContainer, LogoutButton } from "./Adminboard.Style";
 
 const Adminboard = () => {
+  const navigate = useNavigate()
   return (
     <div>
       <DashLogo className="dash-logo">
-        <Logo src={Dashboardlogo} alt="" />
+        <Logo src={Dashboardlogo} alt="" onClick={() => navigate("/")}/>
       </DashLogo>
 
       <SidebarContainer className="sidebar-container">

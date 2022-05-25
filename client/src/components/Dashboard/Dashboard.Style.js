@@ -1,12 +1,14 @@
 import styled from "styled-components";
 
 export const DashLogo = styled.div`
-  margin: 1em auto;
-  width: 90%;
-  height: 10vh;
+  width: 14%;
+  height: 18vh;
+  margin-left: 2em;
+  
 `;
 
 export const Logo = styled.img`
-  max-width: 100%;
+  max-height: 100%;
+  cursor: pointer;
 `;
 

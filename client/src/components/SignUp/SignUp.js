@@ -1,70 +1,54 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import {
   FormContainer,
   Input,
   LoginHeader,
   ErrorMessage,
   Button,
-} from "./Login.Style";
-import { useNavigate } from "react-router-dom";
+} from "./SignUp.Style";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
 
 const schema = yup.object().shape({
+  name: yup.string().min(8).max(32).required(),
   email: yup.string().email().required(),
   password: yup.string().min(8).max(32).required(),
 });
 
-const Login = () => {
+const SignUp = () => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [data, setData] = useState([]);
+
+  const notify = () => toast.success("sign up successful, login now");
+
+  const postData = (data) => {
+    axios.post(`https://6286d96de9494df61b2e3243.mockapi.io/CrudData`, {
+      name,
+      email,
+      password,
+    });
+
+    notify();
+  };
 
   const {
     register,
-    // handleSubmit,
+    handleSubmit,
     formState: { errors },
     reset,
   } = useForm({
     resolver: yupResolver(schema),
   });
-  const navigate = useNavigate();
 
-
-  // const notify = () => toast.success("sign up successful, login now");
-
-  const onSubmitHandler = () => {
-    const auth = data.filter(
-      (infoData) => infoData.password === password
-    );
-    if (auth) {
-      toast.success("Login Successful");
-      navigate("/dashboard");
-    } else {
-
-    }
+  const onSubmitHandler = (data) => {
     reset();
-    // navigate("/dashboard");
   };
-
-  const getData = async () => {
-    try {
-      const result = await axios.get(
-        `https://6286d96de9494df61b2e3243.mockapi.io/CrudData`
-      );
-      setData(result.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  useEffect(() => {
-    getData();
-  }, []);
 
   return (
     <div>
@@ -79,15 +63,22 @@ const Login = () => {
         draggable
         pauseOnHover
       />
+      <FormContainer onSubmit={handleSubmit(onSubmitHandler)}>
+        <LoginHeader>Insert your details</LoginHeader>
 
-      <FormContainer onSubmit={onSubmitHandler}>
-        <LoginHeader>Lets sign you in.</LoginHeader>
+        <Input
+          {...register("name")}
+          placeholder="please in insert your name"
+          type="text"
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
+        <ErrorMessage>{errors.name?.message}</ErrorMessage>
 
         <Input
           {...register("email")}
           placeholder="email"
           type="email"
-          value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
@@ -97,18 +88,17 @@ const Login = () => {
           {...register("password")}
           placeholder="password"
           type="password"
-          value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
         <ErrorMessage>{errors.password?.message}</ErrorMessage>
 
-        <Button type="submit" onClick={getData}>
-          Login
+        <Button type="submit" onClick={postData}>
+          Sign Up
         </Button>
       </FormContainer>
     </div>
   );
 };
 
-export default Login;
+export default SignUp;

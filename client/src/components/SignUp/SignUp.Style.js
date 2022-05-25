@@ -1,18 +1,11 @@
 import styled from "styled-components";
 
 
-export const LoginHeader = styled.h2`
-  padding-top: 0.8em;
-  font-size: 2.2em;
-  color: white;
-  text-align: center;
-`;
-
 export const FormContainer = styled.form`
-  margin-left: 8.1rem;
+  margin-left: 29rem;
   width: 26%;
   height: 70vh;
-  border-radius: 10px 0 0 10px;
+  border-radius: 0 10px 10px 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -20,6 +13,13 @@ export const FormContainer = styled.form`
   position: absolute;
   top: 23%;
   left: 13.7%;
+`;
+
+export const LoginHeader = styled.h2`
+  padding-top: 0.8em;
+  font-size: 2.2em;
+  color: white;
+  text-align: center;
 `;
 
 export const Input = styled.input`
