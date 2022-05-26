@@ -42,7 +42,7 @@ const TextUpload = ({ open, onClose }) => {
 
   if (!open) return null;
   return (
-    <div>
+    <>
       <Overlay className="overlay" onClick={onClose}>
         <ModalContainer
           className="modal-container"
@@ -96,7 +96,7 @@ const TextUpload = ({ open, onClose }) => {
           </FormContainer>
         </ModalContainer>
       </Overlay>
-    </div>
+    </>
   );
 };
 
