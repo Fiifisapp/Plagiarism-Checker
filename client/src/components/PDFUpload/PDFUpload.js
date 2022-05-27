@@ -15,6 +15,8 @@ import {
   TextContent,
   Button,
 } from "./PDFUpload.Style";
+import axios from "axios";
+import { Navigate } from "react-router-dom";
 
 const schema = yup.object().shape({
   documentName: yup.string().required(),
@@ -28,6 +30,8 @@ const PDFUpload = ({ open, onClose }) => {
   const [description, setDescription] = useState("");
   const [content, setContent] = useState("");
 
+  const format = "PDF";
+
   const {
     register,
     handleSubmit,
@@ -37,10 +41,25 @@ const PDFUpload = ({ open, onClose }) => {
     resolver: yupResolver(schema),
   });
 
+  const postData = () => {
+    axios.post(`https://6286d96de9494df61b2e3243.mockapi.io/DocumentsData`, {
+      documentName,
+      documentAuthor,
+      description,
+      content,
+      format
+    })
+  }
+
   const onSubmitHandler = () => {
+    Navigate('documents')
     reset();
   };
 
+  const sendRequest = () => {
+    postData()
+    onClose()
+  }
   if (!open) return null;
   return (
     <>
@@ -93,7 +112,7 @@ const PDFUpload = ({ open, onClose }) => {
             />
             <ErrorMessage>{errors.documentName?.message}</ErrorMessage>
 
-            <Button>upload</Button>
+            <Button onClick={sendRequest}>upload</Button>
           </FormContainer>
         </ModalContainer>
       </Overlay>
