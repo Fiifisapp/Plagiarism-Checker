@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import { useState  } from "react";
 import {
   Overlay,
@@ -9,12 +8,11 @@ import {
   Close,
 } from "./AddDocument.Style";
 import TextUpload from "../TextUpload/TextUpload";
+import PDFUpload from "../PDFUpload/PDFUpload";
 
 const AddDocument = ({ open, onClose }) => {
   const [uploadText, setUploadText] = useState(false);
-
-  const navigate = useNavigate();
-
+  const [uploadPDF, setUploadPDF] = useState(false);
   if (!open) return null;
 
   return (
@@ -27,7 +25,7 @@ const AddDocument = ({ open, onClose }) => {
           <Close onClick={onClose}>X</Close>
           <HeaderText>click to upload a PDF or text</HeaderText>
           <ButtonContainer className="button-container">
-            <Button onClick={() => navigate("pdf-upload")}>
+            <Button onClick={() => setUploadPDF(true)}>
               upload PDF
             </Button>
             <Button  onClick={() => setUploadText(true)}>
@@ -35,6 +33,7 @@ const AddDocument = ({ open, onClose }) => {
             </Button>
           </ButtonContainer>
           <TextUpload open={uploadText} onClose={() => setUploadText(false)}/>
+          <PDFUpload open={uploadPDF} onClose={() => setUploadPDF(false)}/>
         </ModalContainer>
       </Overlay>
     </>

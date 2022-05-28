@@ -15,6 +15,8 @@ import {
   TextContent,
   Button
 } from "./TextUpload.Style";
+import axios from "axios";
+import { Navigate } from "react-router-dom";
 
 const schema = yup.object().shape({
   documentName: yup.string().required(),
@@ -27,22 +29,42 @@ const TextUpload = ({ open, onClose }) => {
   const [documentAuthor, setDocumentAuthor] = useState("");
   const [description, setDescription] = useState("");
   const [content, setContent] = useState("");
+  const format = "txt";
+
 
   const {
     register,
+    handleSubmit,
     formState: { errors },
     reset,
   } = useForm({
     resolver: yupResolver(schema),
   });
 
+  const postData = () => {
+    axios.post(`https://6286d96de9494df61b2e3243.mockapi.io/DocumentsData`, {
+      documentName,
+      documentAuthor,
+      description,
+      content,
+      format
+    })
+  }
+
+
   const onSubmitHandler = () => {
     reset();
+    Navigate("documents")
   };
+
+  const sendRequest = () => {
+    postData()
+    onClose()
+  }
 
   if (!open) return null;
   return (
-    <div>
+    <>
       <Overlay className="overlay" onClick={onClose}>
         <ModalContainer
           className="modal-container"
@@ -50,7 +72,7 @@ const TextUpload = ({ open, onClose }) => {
         >
           <Close onClick={onClose}> x </Close>
           <HeaderText>Text Upload</HeaderText>
-          <FormContainer className="form-container" onSubmit={onSubmitHandler}>
+          <FormContainer className="form-container" onSubmit={handleSubmit(onSubmitHandler)}>
             <InputContainer className="input-container">
               <Input
                 {...register("documentName")}
@@ -92,11 +114,11 @@ const TextUpload = ({ open, onClose }) => {
             />
             <ErrorMessage>{errors.documentName?.message}</ErrorMessage>
 
-            <Button>upload</Button>
+            <Button onClick={sendRequest}>upload</Button>
           </FormContainer>
         </ModalContainer>
       </Overlay>
-    </div>
+    </>
   );
 };
 
