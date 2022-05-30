@@ -48,7 +48,7 @@ const Documents = () => {
         </FilesContainer>
       </DocumentContainer>
       <AddDocument open={addDocs} onClose={() => setAddDocs(false)} />
-      <EditDelete open={updateDocs} onClose={() => setUpdateDocs(false)} />
+      <EditDelete open={updateDocs} onClose={() => setUpdateDocs(false)} data={documentData}/>
     </div>
   );
 };
