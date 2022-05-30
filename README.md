@@ -1,4 +1,4 @@
-# React Hunter
+# Amalitech Plagiarism Checker
 >This project is  built with the aim of  implementing a web-based Plagiarism detection system to check for plagiarism in people’s content.
 
 ## Features
