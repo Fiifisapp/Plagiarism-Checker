@@ -1,43 +1,40 @@
-import React, { useState } from 'react';
-import TextUpload from '../TextUpload/TextUpload';
-import PDFUpload from '../PDFUpload/PDFUpload';
+import React, { useState } from "react";
+import TextUpload from "../TextUpload/TextUpload";
+import PDFUpload from "../PDFUpload/PDFUpload";
 import {
-    Overlay,
-    ModalContainer,
-    HeaderText,
-    ButtonContainer,
-    Button,
-    Close,
-  } from "./EditDelete.Style"
+  Overlay,
+  ModalContainer,
+  HeaderText,
+  ButtonContainer,
+  Button,
+  Close,
+} from "./EditDelete.Style";
+// import axios from 'axios';
 
-const EditDelete = ({open, onClose}) => {
-    const [uploadText, setUploadText] = useState(false);
+const EditDelete = (props) => {
+  const [uploadText, setUploadText] = useState(false);
   const [uploadPDF, setUploadPDF] = useState(false);
 
-    if (!open) return null;
+  if (!props.open) return null;
   return (
     <>
-        <Overlay className="overlay" onClick={onClose}>
+      <Overlay className="overlay" onClick={props.onClose}>
         <ModalContainer
           className="modal-container"
           onClick={(e) => e.stopPropagation()}
         >
-          <Close onClick={onClose}>X</Close>
+          <Close onClick={props.onClose}>X</Close>
           <HeaderText>click to edit or delete</HeaderText>
           <ButtonContainer className="button-container">
-            <Button >
-              edit
-            </Button>
-            <Button  >
-              delete
-            </Button>
+            <Button >edit</Button>
+            <Button>delete</Button>
           </ButtonContainer>
-          <TextUpload open={uploadText} onClose={() => setUploadText(false)}/>
-          <PDFUpload open={uploadPDF} onClose={() => setUploadPDF(false)}/>
+          <TextUpload open={uploadText} onClose={() => setUploadText(false)} />
+          <PDFUpload open={uploadPDF} onClose={() => setUploadPDF(false)} />
         </ModalContainer>
       </Overlay>
     </>
-  )
-}
+  );
+};
 
-export default EditDelete
+export default EditDelete;
