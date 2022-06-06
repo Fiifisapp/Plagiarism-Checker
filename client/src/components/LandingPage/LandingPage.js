@@ -30,7 +30,7 @@ import {
 } from "./LandingPage.Style";
 
 const LandingPage = () => {
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
 
   const navigate = useNavigate();
 
