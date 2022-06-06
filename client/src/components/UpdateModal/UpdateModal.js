@@ -50,12 +50,13 @@ const UpdateModal = ({ open, onClose, getData }) => {
 
 
   const sendDataAPI = () => {
-    getData()
+    
       axios.put(`https://6286d96de9494df61b2e3243.mockapi.io/UsersData/${id}`, {
           name,
           email,
           password
       })
+      getData()
   }
 
   return (
