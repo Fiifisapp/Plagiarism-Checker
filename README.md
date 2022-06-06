@@ -19,5 +19,5 @@
 ## Technologies used
 * GitHub 
 * React 
-* Styled-components
+* Styled-component
 * Javascript
