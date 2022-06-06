@@ -25,9 +25,10 @@ const Documents = () => {
         setDocuments(Response.data);
       });
   }
+
   useEffect (() => {
     getDocuments()
-  }, [])
+  })
 
   
 

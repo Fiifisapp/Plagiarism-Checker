@@ -13,6 +13,8 @@
 ## Deployed Platform
 >Open https://plagiarism-checker.vercel.app/ to view the online platform in your browser. 
 
+## Figma Design
+>Open https://www.figma.com/file/WcpN5o9SXA0ru1gnLq2Qfu/Plagiarism-Checker?node-id=3%3A16 to view the design online.
 
 ## Technologies used
 * GitHub 
